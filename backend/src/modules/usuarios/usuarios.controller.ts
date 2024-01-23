@@ -10,14 +10,21 @@ import {
 import { UsuariosService } from './usuarios.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import { HashearSenhaPipe } from 'src/recursos/hashear-senha.pipe';
 
 @Controller('usuarios')
 export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
 
   @Post()
-  async create(@Body() createUsuarioDto: CreateUsuarioDto) {
-    const usuario = await this.usuariosService.create(createUsuarioDto);
+  async create(
+    @Body() { senha, ...dadosDoUsuario }: CreateUsuarioDto,
+    @Body('senha', HashearSenhaPipe) senhaHasheada: string,
+  ) {
+    const usuario = await this.usuariosService.create({
+      senha: senhaHasheada,
+      ...dadosDoUsuario,
+    });
     return { message: 'Usuario criado com sucesso!' };
   }
 

@@ -20,6 +20,7 @@ const FormRecuperarSenha = () => {
       return;
     }
   };
+
   return (
     <div className="form-recuperar-senha">
       <h2 className="titulo">

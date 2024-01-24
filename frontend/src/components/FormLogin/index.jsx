@@ -1,3 +1,4 @@
+import { api } from "../../api/api";
 import "./main.scss";
 import { useState } from "react";
 
@@ -20,7 +21,7 @@ const FormLogin = ({ showForm }) => {
     document.querySelector("#erro").innerHTML = "";
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const reSenha = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W+).{6,30}$/);
     const reEmail = RegExp(
@@ -30,6 +31,17 @@ const FormLogin = ({ showForm }) => {
     if (!password.match(reSenha) || !email.match(reEmail)) {
       document.querySelector("#erro").innerHTML = "Email ou senha invalidos";
       return;
+    }
+
+    try {
+      const response = await api
+        .post("/auth/login", {
+          email: email,
+          senha: password,
+        })
+        .then((response) => console.log(response.data));
+    } catch (error) {
+      console.log(error);
     }
   };
 

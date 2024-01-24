@@ -1,0 +1,124 @@
+@import '../../css/variables.scss';
+
+.form-recuperar-senha {
+    max-width: 380px;
+    background-color: $white;
+    border-radius: 28px;
+    padding: 36px 54px 90px;
+
+    padding-bottom: 90px;
+
+    .titulo {
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: -2.34px;
+        color: #081B4E;
+        font-family: $font-primary;
+
+        span {
+            color: $orange-500;
+        }
+    }
+
+    .subtitulo {
+        font-size: 16px;
+        letter-spacing: -1.04px;
+        line-height: 127%;
+        font-family: $font-primary;
+        color: $gray-500;
+        font-weight: 400;
+        margin-top: 28px;
+    }
+
+    .form {
+        margin-top: 6px;
+        width: 100%;
+
+
+        fieldset {
+            width: 100%;
+            border-radius: 10px;
+            border: 0.7px solid $gray-400;
+            display: block;
+            position: relative;
+
+            input {
+                display: block;
+                width: 100%;
+                border-radius: 10px;
+                border: 0.7px solid $gray-400;
+                padding: 20px 15px;
+                box-sizing: border-box;
+
+                font-size: 16px;
+                color: $blue-500;
+                font-weight: 700;
+                letter-spacing: -1.04px;
+
+                &:focus {
+                    border: 0.7px solid $blue-500;
+                }
+
+                &::placeholder {
+                    font-size: 14px;
+                    color: $gray-400;
+                    font-family: $font-primary;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: -0.91px;
+                }
+            }
+
+            svg {
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translate(-50%, -50%);
+                z-index: 20;
+            }
+
+            &:focus-within {
+                svg {
+                    path {
+                        fill: $blue-500;
+                    }
+                }
+            }
+
+            margin-top: 16px;
+            margin-bottom: 12px;
+        }
+
+        .msg-erro {
+            color: $orange-700;
+            font-size: 14px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #081B4E;
+            padding: 16px 107px;
+            border-radius: 10px;
+            border: none;
+            height: 56px;
+            font-size: 24px;
+            font-family: $font-primary;
+            font-weight: 700;
+            letter-spacing: -1.56px;
+            color: #fbfbfb;
+            cursor: pointer;
+
+            &:disabled {
+                background-color: #C3C3C3;
+                cursor: not-allowed;
+            }
+
+            svg {
+                margin-left: 10px;
+            }
+        }
+    }
+
+}

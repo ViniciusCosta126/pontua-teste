@@ -42,6 +42,7 @@ const FormLogin = ({ showForm }) => {
         .then((response) => console.log(response.data));
     } catch (error) {
       console.log(error);
+      document.querySelector("#erro").innerHTML = error.response.data.message;
     }
   };
 

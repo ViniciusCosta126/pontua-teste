@@ -2,25 +2,50 @@
 
 .container {
     background-color: $blue-800;
-    padding: 0 24px;
     font-family: $font-primary;
     height: 100vh;
+    padding-top: 50px;
 
     .logo {
-        margin-top: 50px;
-        margin-left: 40px;
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+
+        @media(min-width: 1024px) {
+            display: unset;
+            margin: unset;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
     }
 
     &-main {
+        display: flex;
+        flex-direction: column-reverse;
 
         .build {
-            margin-left: 90px;
+            display: none;
+
+            @media(min-width: 768px) {
+                display: block;
+                position: absolute;
+                bottom: 50%;
+                left: 50%;
+                transform: translate(-50%, 50%);
+            }
+
+            @media(min-width:1024px) {
+                position: unset;
+                transform: unset;
+                width: 55%;
+            }
         }
 
         @media(min-width: 1024px) {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            flex-direction: unset;
         }
     }
 

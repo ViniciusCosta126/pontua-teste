@@ -4,6 +4,7 @@ import Build from "../../assets/images/bro.png";
 import FormLogin from "../../components/FormLogin";
 import { useState } from "react";
 import FormRecuperarSenha from "../../components/FormRecuperaSenha";
+import Container from "../../components/Container/index";
 const Login = () => {
   const [showForm, setShowForm] = useState(true);
 
@@ -12,17 +13,19 @@ const Login = () => {
   };
   return (
     <div className="container">
-      <img className="logo" src={Logo} alt="" />
-      <div className="container-main">
-        <img className="build" src={Build} alt="" />
-        <div className="forms">
-          {showForm ? (
-            <FormLogin showForm={handleShowForm} />
-          ) : (
-            <FormRecuperarSenha />
-          )}
+      <Container>
+        <img className="logo" src={Logo} alt="" />
+        <div className="container-main">
+          <img className="build" src={Build} alt="" />
+          <div className="forms">
+            {showForm ? (
+              <FormLogin showForm={handleShowForm} />
+            ) : (
+              <FormRecuperarSenha />
+            )}
+          </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

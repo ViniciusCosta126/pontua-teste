@@ -32,10 +32,10 @@ export class UsuariosService {
 
   async buscaEmail(email: string) {
     const checkEmail = await this.usuarioRepository.findOne({
-      where: { email },
+      where: { email: email },
     });
 
-    if (checkEmail === null) {
+    if (!checkEmail) {
       throw new NotFoundException('O email não foi encontrado.');
     }
 

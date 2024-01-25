@@ -1,10 +1,12 @@
 @import '../../css/variables.scss';
 
 .form-recuperar-senha {
-    max-width: 380px;
     background-color: $white;
+    max-width: 380px;
+    margin: auto;
     border-radius: 28px;
     padding: 36px 54px 90px;
+    position: relative;
 
     padding-bottom: 90px;
 
@@ -99,7 +101,7 @@
         .btn-submit {
             width: 100%;
             background-color: #081B4E;
-            padding: 16px 107px;
+            padding: 16px 50px;
             border-radius: 10px;
             border: none;
             height: 56px;
@@ -119,6 +121,14 @@
                 margin-left: 10px;
             }
         }
+    }
+
+    @media(min-width:768px) {
+        position: relative;
+    }
+
+    @media(min-width: 1024px) {
+        margin-left: 20px;
     }
 
 }

@@ -35,6 +35,10 @@ export const AuthProvider = ({ children }) => {
       return error;
     }
   };
+  const signOut = () => {
+    localStorage.removeItem("@Auth:token");
+    setUser(null);
+  };
 
   return (
     <AuthContext.Provider
@@ -42,6 +46,7 @@ export const AuthProvider = ({ children }) => {
         user,
         signed: !!user,
         signIn,
+        signOut,
       }}
     >
       {children}

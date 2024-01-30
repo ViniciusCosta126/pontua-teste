@@ -1,8 +1,5 @@
 import "./main.scss";
 import Logo from "../../assets/images/interrogatorio-de-escudo 1.svg";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../context/auth.context";
-import { Navigate } from "react-router-dom";
 
 const FormAgente = ({ submitHandle }) => {
   const handleSubmit = () => {

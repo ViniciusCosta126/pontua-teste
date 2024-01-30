@@ -1,9 +1,13 @@
+import { AuthProvider } from "./context/auth.context";
 import Login from "./pages/Login/Login";
+import { AppRoutes } from "./routes/Index";
 
 function App() {
   return (
     <>
-      <Login />
+      <AuthProvider>
+        <AppRoutes></AppRoutes>
+      </AuthProvider>
     </>
   );
 }

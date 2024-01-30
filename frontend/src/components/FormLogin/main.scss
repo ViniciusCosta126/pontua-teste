@@ -7,6 +7,10 @@
     max-width: 380px;
     margin: auto;
 
+    &.disabled {
+        display: none;
+    }
+
     .titulo {
         font-size: 36px;
         font-weight: 700;

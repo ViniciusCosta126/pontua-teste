@@ -1,11 +1,13 @@
-import { api } from "../../api/api";
 import "./main.scss";
-import { useState } from "react";
+import { AuthContext } from "../../context/auth.context";
+import { Navigate } from "react-router-dom";
+import { useContext, useState } from "react";
 
-const FormLogin = ({ showForm }) => {
+const FormLogin = ({ showForm, showHeroes, form }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signIn, signed } = useContext(AuthContext);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -33,21 +35,20 @@ const FormLogin = ({ showForm }) => {
       return;
     }
 
-    try {
-      const response = await api
-        .post("/auth/login", {
-          email: email,
-          senha: password,
-        })
-        .then((response) => console.log(response.data));
-    } catch (error) {
-      console.log(error);
-      document.querySelector("#erro").innerHTML = error.response.data.message;
+    const responseSignIn = await signIn(email, password);
+    if (responseSignIn !== undefined) {
+      if ("error" in responseSignIn.response.data) {
+        document.querySelector("#erro").innerHTML =
+          responseSignIn.response.data.message;
+      }
+    }
+    if (signed) {
+      showHeroes();
     }
   };
 
   return (
-    <div className="form-loguin">
+    <div className={`form-loguin ${form ? "disabled" : ""}`}>
       <h2 className="titulo">
         Bem-vindo<span>.</span>
       </h2>
